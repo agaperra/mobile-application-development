@@ -1,6 +1,6 @@
 package com.mpei.vmss.mobile_application_development.lab_1;
 
-public class LaboratoryWork_1 {
+public class Task_1 {
 
     /**
      * Лабораторная работа №1 по курсу Разработка мобильных приложений
