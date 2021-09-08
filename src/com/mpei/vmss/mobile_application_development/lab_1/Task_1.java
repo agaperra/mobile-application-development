@@ -8,39 +8,35 @@ public class Task_1 {
      * Записать логическое выражение, соответствующее заданной области истинности.
      * Составить функцию, возвращающее 1 - если точка принадлежит заданной и 0 – если не принадлежит.
      * Подсчитать количество точек, попавших в заданную область.
-     * Вариант: N списке mod 3 + 1 = 1 mod 3 + 1 = 2
+     * Вариант: N списке mod 3 + 1 = 7 mod 3 + 1 = 2
      **/
 
     public static void main(String[] args) {
 
         // Логическое выражение для нужной области
-        // ( x >= 0 ) && ( x <= 2 ) && ( y >= 1 ) && ( y <= 2 )
+        // (( x >= 0 ) && ( x <= 2 ) && ( y >= 1 ) && ( y <= 2 )) || (( x >= 1) && (x <= 2) && (y >= 0) && (y <= 1))
         // если не учитывать границы, то из выражения уйдут все знаки равенства
 
-        // возьмём 40 случайных точек
-        int countOfPoints = 40;
         int count = 0; // количество точек, попавших в область
-        int range = 3; // диапазон чисел для генерации, т.е. от 0 до range
 
-        for (int i = 0; i < countOfPoints; i++){
-
-            double x = Math.random() * range;
-            double y = Math.random() * range;
-
-            System.out.printf("Точка (%.2f, %.2f) ", x, y);
-            if (!pointInArea( x, y )) {
-                System.out.println("Не принадлежит заданной области");
-            } else {
-                System.out.println("Принадлежит заданной области");
-                count++;
+        for (int x = 0; x <= 2; x++) {
+            for (int y = 0; y <= 2; y++) {
+                System.out.printf( "Точка (%d, %d) ", x, y );
+                if (!pointInArea( x, y )) {
+                    System.out.println( "Не принадлежит заданной области" );
+                } else {
+                    System.out.println( "Принадлежит заданной области" );
+                    count++;
+                }
             }
         }
-        System.out.println("Всего: " + count + " точек из " + countOfPoints + " случайных попали в заданную область.");
+
+        System.out.println( "Всего: " + count + " точек принадлежат заданной области." );
 
     }
 
     // функция, определеяющая находится ли заданная точка внутри диапзона
-    public static boolean pointInArea(double x, double y){
-        return x >=0 && x <= 2 && y >= 1 && y <= 2;
+    public static boolean pointInArea(double x, double y) {
+        return (( x >= 0 ) && ( x <= 2 ) && ( y >= 1 ) && ( y <= 2 )) || (( x >= 1) && (x <= 2) && (y >= 0) && (y <= 1));
     }
 }
