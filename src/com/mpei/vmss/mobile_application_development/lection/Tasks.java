@@ -35,5 +35,13 @@ public class Tasks {
             }
 
         }
+
+        // Работа с классами
+        Box box = new Box(1,5,6);
+        System.out.println(box);
+        System.out.println(box.getVolume());
+        System.out.println("Высота коробки: " + box.getHeight());
+        System.out.println("Ширина коробки: " + box.getWidth());
+        System.out.println("Длина коробки: " + box.getLength());
     }
 }
