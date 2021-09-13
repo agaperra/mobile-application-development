@@ -13,6 +13,7 @@ public class Tasks {
 
     public static void main(String[] args) {
 
+        // Задача 1
         for (int i = 1000; i <= 9999; i++) {
             if ((i / 1000 + i / 100 % 10) == (i / 10 % 10 + i % 10)) {
                 System.out.println( i );
@@ -20,6 +21,7 @@ public class Tasks {
 
         }
 
+        // Задача 2
         Scanner keyboard = new Scanner( System.in );
         int rand = new Random().nextInt( 10 ) + 1;
         while(true){
