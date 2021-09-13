@@ -1,5 +1,6 @@
 package com.mpei.vmss.mobile_application_development.lection;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ import java.util.Scanner;
  * Лекция №2
  * 13.09.2021
  * Задачи с лекции
-**/
+ **/
 
 public class Tasks {
 
@@ -43,5 +44,32 @@ public class Tasks {
         System.out.println("Высота коробки: " + box.getHeight());
         System.out.println("Ширина коробки: " + box.getWidth());
         System.out.println("Длина коробки: " + box.getLength());
+
+        // Коллекции
+        ArrayList<String> employees = new ArrayList<String>();
+        employees.add( "Работник 1" );
+        employees.add( "Работник 2" );
+        employees.add( "Работник 3" );
+        employees.add( "Работник 4" );
+        // вывод в виде массива
+        System.out.println( employees );
+        // вывод всех сотрубников
+        for (int i = 0; i < employees.size(); i++) {
+            System.out.println( employees.get( i ) );
+        }
+        // удаление
+        employees.remove( 1 );
+        // вывод в виде массива
+        System.out.println( employees );
+        // вывод
+        for (int i = 0; i < employees.size(); i++) {
+            System.out.println( employees.get( i ) );
+        }
+        // for each вывод
+        for (String person : employees) {
+            System.out.println( person );
+        }
+
+
     }
 }
