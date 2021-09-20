@@ -96,40 +96,58 @@ public class MainClass_variant_2 {
                 + ": "
                 + Arrays.toString( newArr_6 ) );
 
+        int[] array_7 = {4, 3, 1, 4, 2, 5, 8};
+        System.out.println( "Исходный массив: " + Arrays.toString( array_7 ) );
+        int s4 = 1000000;
+        int[] newArr_7 = findSumSequence( array_7, s4 );
+        System.out.println( "Последовательность в массиве "
+                + Arrays.toString( array_7 )
+                + ", дающая в сумме число "
+                + s4
+                + ": "
+                + Arrays.toString( newArr_7 ) );
+
 
     }
 
+    // программа поиска последовательности максимальной длины, где элементы должны идти по возрастанию
     public static int[] findUpSequence(int[] arr) {
-        int start = 0;
-        int end = 0;
-        int temp = 0;
+        int start = 0; // стартовая позиция
+        int end = 0; // позиция конца
+        int temp = 0; // временная переменная
         for (int i = 0; i < arr.length; i++) {
             if (i == 0 || arr[i] < arr[i - 1]) {
+                // если это первый лемент массива или если предыдущий элемент меньше текущего
                 temp = i;
             } else if (i - temp > end - start) {
+                // если если разница между текущим и временным больше, чем разница между стартом и концом
                 start = temp;
                 end = i;
             }
         }
+        // копируем массив
         return Arrays.copyOfRange( arr, start, end + 1 );
     }
 
+    // программа поиска последовательности подряд идущих чисел, дающих сумму определенного числа
     private static int[] findSumSequence(int[] arr, int s) {
-        int sum = 0;
-        int count = 0;
+        int sum = 0; // для определения сумм в цикле
+        int count = 0; // для определения количства элементов в сумме
         for (int i = 0; i < arr.length; i++) {
             for (int j = i; j < arr.length; j++) {
                 sum += arr[j];
                 count++;
-                if (sum > s) {
+                if (sum > s) { // если сумма превышает заданную - выход из цикла
                     sum = 0;
                     count = 0;
                     break;
-                } else if (sum == s) {
+                } else if (sum == s) { // если сумма равна заданной - возврат скопированного массива
                     return Arrays.copyOfRange( arr, j - count + 1, j + 1 );
                 }
+                // если сумма меньше, то цикл продолжается
             }
         }
+        // если не найдено - возвращаем пустой массив
         return Arrays.copyOfRange( arr, 0, 0 );
     }
 
