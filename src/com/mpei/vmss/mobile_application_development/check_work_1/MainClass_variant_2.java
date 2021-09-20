@@ -44,11 +44,12 @@ public class MainClass_variant_2 {
         System.out.println( "Максимальная последовательность подряд идущих возрастающих чисел " + Arrays.toString( newArr_2 ) );
         System.out.println( "Длина этой последовательности равна " + newArr_2.length );
 
-        int[] array_0 = {3, 2, 3, 4, 2, 2, 4};
+        int[] array_0 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0, 1, 2};
         System.out.println( "\nИсходный массив: " + Arrays.toString( array_0 ) );
         int[] newArr_0 = findUpSequence( array_0 );
         System.out.println( "Максимальная последовательность подряд идущих возрастающих чисел " + Arrays.toString( newArr_0 ) );
         System.out.println( "Длина этой последовательности равна " + newArr_0.length );
+
 
 
         // Вариант 2 Задание 2
@@ -110,29 +111,25 @@ public class MainClass_variant_2 {
 
     }
 
+
     // программа поиска последовательности максимальной длины, где элементы должны идти по возрастанию
     public static int[] findUpSequence(int[] arr) {
+        int start = 0; // стартовая позиция
         int end = 0; // позиция конца
-        int count = 0; // количество подряд идущих чисел
         int temp = 0; // временная переменная
         for (int i = 0; i < arr.length; i++) {
-            if (i == 0 || (arr[i] > arr[i - 1] && arr[i] == arr[i - 1] + 1)) {
+            if (i == 0 || arr[i] < arr[i - 1]) {
                 // если это первый лемент массива или если предыдущий элемент меньше текущего
-                count++;
+                temp = i;
+            } else if (i - temp > end - start) {
+                // если если разница между текущим и временным больше, чем разница между стартом и концом
+                start = temp;
                 end = i;
-                temp = count;
-            }
-            else {
-                count = 0;
             }
         }
-        // копируем массив, если последовательности длиннее 1 элемента
-        if (temp > 1) {
-            return Arrays.copyOfRange( arr, end - temp, end+1 );
-        } else // иначе возвращаем пустой массив
-            return Arrays.copyOfRange( arr, 0, 0 );
+        // копируем массив
+        return Arrays.copyOfRange( arr, start, end + 1 );
     }
-
     // программа поиска последовательности подряд идущих чисел, дающих сумму определенного числа
     private static int[] findSumSequence(int[] arr, int s) {
         int sum = 0; // для определения сумм в цикле
