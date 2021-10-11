@@ -66,9 +66,7 @@ public class UnitedSet<T> extends Set {
 
     @Override
     public void show() {
-        for (Object s : unitedSet) {
-            System.out.print( s.toString() + " " );
-        }
+        System.out.println(unitedSet);
         System.out.println();
     }
 }
